@@ -11,6 +11,8 @@ export const routes = [
     handler: (req, res) => {
       const { title, description } = req.body
 
+     
+
       if (!title) {
         return res.writeHead(400).end(
           JSON.stringify({ message: 'title is required' }),
@@ -19,7 +21,7 @@ export const routes = [
 
       if (!description) {
         return res.writeHead(400).end(
-          JSON.stringify({message: 'description is required' })
+          JSON.stringify({ message: 'description is required' })
         )
       }
 
@@ -103,6 +105,7 @@ export const routes = [
       const { id } = req.params
 
       const [task] = database.select('tasks', { id })
+      console.log(task)
 
       if (!task) {
         return res.writeHead(404).end()
